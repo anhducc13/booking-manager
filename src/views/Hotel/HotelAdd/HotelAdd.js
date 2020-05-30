@@ -86,7 +86,7 @@ const HotelAdd = () => {
     <Card
       title="Tạo mới khách sạn"
     >
-      <Steps className="mb-base px-base" current={step} onChange={setStep}>
+      <Steps className="mb-base px-base" current={step}>
         {steps.map(item => (
           <Step key={item.title} title={item.title} />
         ))}
