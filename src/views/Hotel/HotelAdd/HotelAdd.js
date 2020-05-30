@@ -1,57 +1,99 @@
-import React from 'react';
-import { Form, Card, Input } from 'antd';
+import React, { useState } from 'react';
+import { Form, Card, Input, Row, Col, Select, TimePicker, Divider, InputNumber, Button, Upload, Switch, notification, Steps } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import moment from 'moment';
+import { provinces } from 'constant/province';
+import { roomTypes, utilities } from 'constant/hotel';
+import { uploadImage } from 'services/imgur';
+import { hotelService } from '../../../services';
+import HotelCommonInfo from './HotelCommonInfo';
+import HotelRoom from './HotelRoom';
+import HotelPayment from '../HotelView/HotelPayment';
+
+const { Step } = Steps;
 
 const formItemLayout = {
   labelCol: {
-    xs: { span: 24 },
-    sm: { span: 6 },
+    span: 24
   },
   wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 18 },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
+    span: 24
   },
 };
 
-const HotelAdd = () => {
-  const [form] = Form.useForm();
-  const formInitialValues = {
-    cityOrProvince: undefined,
-    checkin: moment('13:00', 'HH:mm'),
-    checkout: moment('12:08', 'HH:mm'),
-    roomTypes: ['standard', 'deluxe'],
-    utilities: [],
-    status: true,
+const dummyRequest = ({ file, onSuccess }) => {
+  setTimeout(() => {
+    onSuccess("ok");
+  }, 0);
+};
+
+const uploadAction = (file) => {
+  return uploadImage(file);
+};
+
+const normFile = e => {
+  console.log('Upload event:', e);
+  if (Array.isArray(e)) {
+    return e;
   }
+  return e && e.fileList;
+};
+
+const HotelAdd = () => {
+  const [commonInfo, setCommonInfo] = useState({});
+  const [step, setStep] = useState(0);
+
+  const next = () => {
+    if (step < steps.length - 1) setStep(step + 1);
+  };
+
+  const stickyBottom = (buttonText) => {
+    return (
+      <div className="sticky-bottom">
+        <Button type="primary" htmlType="submit">
+          {buttonText || 'Tiếp tục'}
+        </Button>
+      </div>
+    );
+  };
+
+  const steps = [
+    {
+      title: 'Thông tin cơ bản',
+      content: (
+        <HotelCommonInfo
+          next={next}
+          stickyBottom={stickyBottom()}
+          commonInfo={commonInfo}
+          setCommonInfo={setCommonInfo}
+        />
+      ),
+    },
+    {
+      title: 'Thông tin phòng',
+      content: (
+        <HotelRoom
+          next={next}
+          stickyBottom={stickyBottom('Lưu và tiếp tục')}
+          commonInfo={commonInfo}
+          setCommonInfo={setCommonInfo}
+        />
+      ),
+    },
+  ];
 
   return (
     <Card
       title="Tạo mới khách sạn"
     >
-      <Form
-        {...formItemLayout}
-        form={form}
-        initialValues={formInitialValues}
-      >
-        <Form.Item name="name" label="Tên khách sạn">
-          <Input />
-        </Form.Item>
-        <Form.Item name="description" label="Mô tả khách sạn">
-          <Input.TextArea />
-        </Form.Item>
-      </Form>
+      <Steps className="mb-base px-base" current={step} onChange={setStep}>
+        {steps.map(item => (
+          <Step key={item.title} title={item.title} />
+        ))}
+      </Steps>
+      <div style={{ paddingBottom: 72 }}>
+        {steps[step] && steps[step].content}
+      </div>
     </Card>
   )
 };

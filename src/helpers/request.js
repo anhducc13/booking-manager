@@ -1,5 +1,5 @@
 // @flow
-import { localizationHelper, notificationHelper } from 'helpers';
+import { notification } from 'antd';
 import i18n from 'i18n';
 
 const STATUS_SUCCESS = 'success';
@@ -43,15 +43,15 @@ const handleRequestError = (error) => {
       if (error.response && error.response.data && error.response.data.code) {
         const { data } = error.response;
         const { message, code } = data;
-        const title = localizationHelper.localize(code);
-
-        notificationHelper.error(title, message);
+        notification.error({ message: code, description: message });
       } else {
-        notificationHelper.error(
-          i18n.t('Error'),
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : i18n.t('ErrorTryAgain'),
+        notification.error(
+          {
+            message: i18n.t('Error'),
+            description: error.response && error.response.data.message
+                ? error.response.data.message
+                : i18n.t('ErrorTryAgain'),
+          }
         );
       }
     }
@@ -60,9 +60,9 @@ const handleRequestError = (error) => {
 
 const handleRequestSuccess = (data) => {
   if (data.code && data.code !== STATUS_SUCCESS) {
-    const title = localizationHelper.localize(data.code);
+    const title = data.code;
     const { message } = data;
-    notificationHelper.error(title, message);
+    notification.error({ message: title, description: message });
     throw new LogicError(data.code, message, data.extra);
   }
 };

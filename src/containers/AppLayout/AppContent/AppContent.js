@@ -11,7 +11,7 @@ const AppContent = props => {
   const { filteredRoutes } = props;
 
   return (
-    <Content className="app-content">
+    <Content className="app-content m-3">
       <Suspense fallback={null}>
         <Switch>
           {filteredRoutes.map(({ component: Component, ...rest }) => {

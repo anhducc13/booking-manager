@@ -9,7 +9,7 @@ const Home = () => {
     <div className="app-container">
       <div className="app-container-head">
         <Title className="app-title" level={4}>
-          {t('WelcomeText')}
+          Xin chào Ductt
         </Title>
       </div>
     </div>
