@@ -37,15 +37,15 @@ const routes = [
   },
   {
     exact: true,
-    path: '/hotels/:id',
-    name: 'Chi tiết khách sạn',
-    component: HotelView,
-  },
-  {
-    exact: true,
     path: '/hotels/add',
     name: 'Thêm mới khách sạn',
     component: HotelAdd,
+  },
+  {
+    exact: true,
+    path: '/hotels/:id',
+    name: 'Chi tiết khách sạn',
+    component: HotelView,
   },
   {
     name: 'Booking',
