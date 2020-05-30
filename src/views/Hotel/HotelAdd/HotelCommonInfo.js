@@ -22,17 +22,17 @@ const HotelCommonInfo = (props) => {
   } = props;
   const [form] = Form.useForm();
   const formInitialValues = {
-    name: '01',
-    description: '01',
-    cityOrProvince: '01',
-    address: '01',
-    longitude: '01',
-    latitude: '01',
+    name: undefined,
+    description: undefined,
+    cityOrProvince: undefined,
+    address: undefined,
+    longitude: undefined,
+    latitude: undefined,
     checkin: moment('13:00', 'HH:mm'),
     checkout: moment('12:00', 'HH:mm'),
-    utilities: ['wifi'],
-    phoneNumber: '01',
-    email: '01',
+    utilities: [],
+    phoneNumber: undefined,
+    email: undefined,
   };
   const rules = {
     name: [{required: true, message: 'Vui lòng nhập tên'}],
