@@ -9,7 +9,7 @@ const Home = () => {
     <div className="app-container">
       <div className="app-container-head">
         <Title className="app-title" level={4}>
-          Xin chào Ductt
+          Xin chào quangdv
         </Title>
       </div>
     </div>

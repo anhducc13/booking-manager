@@ -14,7 +14,7 @@ const { getCurrentLanguage, changeLanguage } = localizationHelper;
 const AppHeader = () => {
   // cũng thế
   const currentUser = {
-    name: 'Ductt',
+    name: 'quangdv',
     picture: '',
   };
 
