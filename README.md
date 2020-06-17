@@ -18,3 +18,4 @@
 - /services: implementation scripts (api call, local storage, cookies)
 - /type: flow types
 - /views: main pages
+
