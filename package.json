@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired --max_old_space_size=8192 build",
+    "build": "set \"CI=false\" && react-app-rewired --max_old_space_size=8192 build",
     "test": "react-app-rewired test",
     "test:cov": "react-app-rewired test --coverage --watchAll=false"
   },
