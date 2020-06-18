@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/booking-manager/static/js/2.b0e988e2.chunk.js"
   },
   {
-    "revision": "532914f00464d35114f2",
+    "revision": "02a565f0f9d895fc18fe",
     "url": "/booking-manager/static/css/main.906313b5.chunk.css"
   },
   {
-    "revision": "532914f00464d35114f2",
-    "url": "/booking-manager/static/js/main.532914f0.chunk.js"
+    "revision": "02a565f0f9d895fc18fe",
+    "url": "/booking-manager/static/js/main.02a565f0.chunk.js"
   },
   {
     "revision": "99b36e70eabee4c3d352",
@@ -112,12 +112,12 @@ self.__precacheManifest = [
     "url": "/booking-manager/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
-    "revision": "af7ae505a9eed503f8b8e6982036873e",
-    "url": "/booking-manager/static/media/fontawesome-webfont.af7ae505.woff2"
-  },
-  {
     "revision": "674f50d287a8c48dc19ba404d20fe713",
     "url": "/booking-manager/static/media/fontawesome-webfont.674f50d2.eot"
+  },
+  {
+    "revision": "af7ae505a9eed503f8b8e6982036873e",
+    "url": "/booking-manager/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
     "revision": "b06871f281fee6b241d60582ae9369b9",
@@ -128,7 +128,7 @@ self.__precacheManifest = [
     "url": "/booking-manager/static/media/fontawesome-webfont.912ec66d.svg"
   },
   {
-    "revision": "b6ceecd8f2f4536803a89ac728f5997d",
+    "revision": "ca12fe21c9ba439f918222b1b3b46168",
     "url": "/booking-manager/index.html"
   }
 ];
