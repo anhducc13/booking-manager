@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired --max_old_space_size=8192 build",
+    "build": "react-app-rewired build",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "test": "react-app-rewired test",
