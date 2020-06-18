@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/booking-manager/precache-manifest.9d95cb9feb53aa2d9862a179e978c262.js"
+  "/quangdv/precache-manifest.61edec9fc00a57814d8ecbb0d201b003.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/booking-manager/index.html", {
+workbox.routing.registerNavigationRoute("/quangdv/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
