@@ -1,5 +1,6 @@
 {
-  "name": "seller-web-app",
+  "homepage": "https://anhducc13.github.io/booking-manager",
+  "name": "booking-web-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,6 +29,8 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired --max_old_space_size=8192 build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "test": "react-app-rewired test",
     "test:cov": "react-app-rewired test --coverage --watchAll=false"
   },
@@ -42,6 +45,7 @@
     "@babel/polyfill": "^7.4.4",
     "babel-loader": "^8.0.5",
     "bluebird": "^3.5.4",
+    "gh-pages": "^3.0.0",
     "node-fetch": "^2.6.0",
     "prettier": "^1.16.4",
     "react-scripts": "2.1.3"
