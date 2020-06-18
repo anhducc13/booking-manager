@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/booking-manager/precache-manifest.eacaaea8a9c0e257eef399ec6844b662.js"
+  "/booking-manager/precache-manifest.41ca195d00ad0483a2ab3d277c68008f.js"
 );
 
 workbox.clientsClaim();
