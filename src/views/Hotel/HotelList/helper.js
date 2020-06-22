@@ -1,9 +1,9 @@
-import { Button, Tag, Avatar } from 'antd';
+import { Button, Tag, Avatar, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { ZoomInOutlined } from '@ant-design/icons';
+import { ZoomInOutlined, CloseOutlined } from '@ant-design/icons';
 
-export const renderColumnsHotels = () => {
+export const renderColumnsHotels = (handleDeleteHotel) => {
   return [
     {
       title: 'ID',
@@ -82,6 +82,15 @@ export const renderColumnsHotels = () => {
               <ZoomInOutlined />
             </Button>
           </Link>
+          {/* <Popconfirm title="Xóa khách sạn" onConfirm={() => handleDeleteHotel(item.id)}>
+            <Button
+              className="ml-2"
+              type="danger"
+              title="Xóa"
+            >
+              <CloseOutlined />
+            </Button>
+          </Popconfirm> */}
         </>
       ),
       key: 'action',

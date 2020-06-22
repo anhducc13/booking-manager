@@ -18,6 +18,7 @@ import { roomTypes } from '../../../constant/hotel';
 import { uploadImage } from '../../../services/imgur';
 import { UploadOutlined } from '@ant-design/icons';
 import { hotelService } from '../../../services';
+import { browserHistory } from 'helpers';
 
 const formItemLayout = {
   labelCol: {
@@ -108,11 +109,11 @@ const HotelRoom = (props) => {
       rest.imageDeluxe = null;
     }
     hotelService.createHotel({...commonInfo, ...rest})
-      .then(() => {
+      .then((data) => {
         notification.success({
           message: 'Tạo mới khách sạn thành công',
         });
-        next();
+        browserHistory.push(`/hotels/${data.result.id}`);
       })
   };
 

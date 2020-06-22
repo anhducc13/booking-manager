@@ -32,10 +32,17 @@ const getAllPayment = (hotelId) => {
   ).then(res => res.data);
 };
 
+const deleteHotel = (hotelId) => {
+  return requestServices.mainClient.delete(
+    `/hotels/${hotelId}`,
+  ).then(res => res.data);
+}
+
 export default {
   createHotel,
   getAllPayment,
   getHotel,
   getHotels,
   updateHotel,
+  deleteHotel,
 }
