@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { t } from 'helpers/i18n';
 
-import { HomeOutlined, EditOutlined, FieldBinaryOutlined, ScheduleOutlined } from '@ant-design/icons';
+import { HomeOutlined, EditOutlined, FieldBinaryOutlined, ScheduleOutlined, FlagOutlined } from '@ant-design/icons';
 
 // Home page
 const Home = lazy(() => import('views/Home'));
@@ -10,6 +10,7 @@ const Page404 = lazy(() => import('views/Page404'));
 const HotelAdd = lazy(() => import('views/Hotel/HotelAdd'));
 const HotelView = lazy(() => import('views/Hotel/HotelView'));
 const HotelList = lazy(() => import('views/Hotel/HotelList'));
+const TourAdd = lazy(() => import('views/Tour/TourAdd'));
 const BookingHotelList = lazy(() => import('views/Booking/BookingHotel/BookingHotelList'));
 
 /*
@@ -46,6 +47,30 @@ const routes = [
     path: '/hotels/:id',
     name: 'Chi tiết khách sạn',
     component: HotelView,
+  },
+  {
+    path: '/tours',
+    name: 'Tours',
+    icon: FlagOutlined,
+    children: ['/tours', '/tours/add'],
+  },
+  {
+    exact: true,
+    path: '/tours',
+    name: 'Danh sách tour',
+    component: TourAdd,
+  },
+  {
+    exact: true,
+    path: '/tours/add',
+    name: 'Thêm mới tour',
+    component: TourAdd,
+  },
+  {
+    exact: true,
+    path: '/tours/:id',
+    name: 'Chi tiết tour',
+    component: TourAdd,
   },
   {
     name: 'Booking',
