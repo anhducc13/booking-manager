@@ -9,6 +9,7 @@ import { hotelService } from '../../../services';
 import HotelCommonInfo from './HotelCommonInfo';
 import HotelRoom from './HotelRoom';
 import HotelPayment from '../HotelView/HotelPayment';
+import { browserHistory } from 'helpers';
 
 const { Step } = Steps;
 
@@ -73,7 +74,6 @@ const HotelAdd = () => {
       title: 'Thông tin phòng',
       content: (
         <HotelRoom
-          next={next}
           stickyBottom={stickyBottom('Lưu và tiếp tục')}
           commonInfo={commonInfo}
           setCommonInfo={setCommonInfo}

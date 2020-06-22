@@ -11,13 +11,14 @@ import {
   Select,
   Upload,
   notification,
+  Switch,
 } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import moment from 'moment';
 import { uploadImage } from '../../../services/imgur';
 import { provinces } from '../../../constant/province';
 import { transportations } from '../../../constant/tour';
 import { tourService } from '../../../services';
+import { browserHistory } from 'helpers';
 
 const formItemLayout = {
   labelCol: {
@@ -43,6 +44,7 @@ const TourAdd = () => {
 
   const [form] = Form.useForm();
   const formInitialValues = {
+    isActive: true,
     name: undefined,
     cityOrProvince: undefined,
     commonAddress: undefined,
@@ -63,12 +65,18 @@ const TourAdd = () => {
     cityOrProvince: [{ required: true, message: 'Vui lòng chọn tỉnh / thành' }],
     commonAddress: [{ required: true, message: 'Vui lòng nhập địa chỉ' }],
     duration: [{ required: true, message: 'Vui lòng thời lượng tour' }],
-    minSize: [{ required: true, message: 'Vui lòng nhập số lượng khách tối thiểu' }],
-    maxSize: [{ required: true, message: 'Vui lòng nhập số lượng khách tối đa' }],
+    minSize: [
+      { required: true, message: 'Vui lòng nhập số lượng khách tối thiểu' },
+    ],
+    maxSize: [
+      { required: true, message: 'Vui lòng nhập số lượng khách tối đa' },
+    ],
     pricePerParticipant: [{ required: true, message: 'Vui lòng nhập giá' }],
     description: [{ required: true, message: 'Vui lòng nhập mô tả' }],
-    transportations: [{ required: true, message: 'Vui lòng chọn một vài phương tiện' }],
-    images: [{required: true, message: 'Vui lòng chọn ít nhất 1 ảnh'}],
+    transportations: [
+      { required: true, message: 'Vui lòng chọn một vài phương tiện' },
+    ],
+    images: [{ required: true, message: 'Vui lòng chọn ít nhất 1 ảnh' }],
     organizerName: [{ required: true, message: 'Vui lòng nhập tên' }],
     organizerPhoneNumber: [{ required: true, message: 'Vui lòng nhập SĐT' }],
     organizerEmail: [{ required: true, message: 'Vui lòng nhập email' }],
@@ -80,12 +88,12 @@ const TourAdd = () => {
     rest.images = images.map(x => x.response.url).join(',');
     rest.organizerAvatar = organizerAvatar[0].response.url;
     rest.transportations = transportations.join(',');
-    tourService.createTour(rest)
-      .then(() => {
-        notification.success({
-          message: 'Tạo mới tour thành công',
-        });
-      })
+    tourService.createTour(rest).then((data) => {
+      notification.success({
+        message: 'Tạo mới tour thành công',
+      });
+      browserHistory.push(`/tours/${data.result.id}`);
+    });
   };
 
   return (
@@ -98,6 +106,13 @@ const TourAdd = () => {
         scrollToFirstError
         style={{ paddingBottom: 72 }}
       >
+        <Row gutter={16}>
+          <Col span={24}>
+            <Form.Item name="isActive" label="Hiệu lực" valuePropName="checked">
+              <Switch />
+            </Form.Item>
+          </Col>
+        </Row>
         <Row gutter={16}>
           <Col span={12}>
             <Form.Item name="name" label="Tên tour" rules={rules.name}>
@@ -130,7 +145,11 @@ const TourAdd = () => {
         </Row>
         <Row gutter={16}>
           <Col span={12}>
-            <Form.Item name="commonAddress" label="Địa chỉ chung" rules={rules.commonAddress}>
+            <Form.Item
+              name="commonAddress"
+              label="Địa chỉ chung"
+              rules={rules.commonAddress}
+            >
               <Input />
             </Form.Item>
           </Col>
@@ -146,12 +165,20 @@ const TourAdd = () => {
         </Row>
         <Row gutter={16}>
           <Col span={12}>
-            <Form.Item name="minSize" label="Số khách (tối thiểu)" rules={rules.minSize}>
+            <Form.Item
+              name="minSize"
+              label="Số khách (tối thiểu)"
+              rules={rules.minSize}
+            >
               <InputNumber className="w-100" />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item name="maxSize" label="Số khách (tối đa)" rules={rules.maxSize}>
+            <Form.Item
+              name="maxSize"
+              label="Số khách (tối đa)"
+              rules={rules.maxSize}
+            >
               <InputNumber className="w-100" />
             </Form.Item>
           </Col>
@@ -235,7 +262,11 @@ const TourAdd = () => {
         <Divider orientation="left">Thông tin người quản lý tour</Divider>
         <Row gutter={16}>
           <Col span={8}>
-            <Form.Item name="organizerName" label="Tên" rules={rules.organizerName}>
+            <Form.Item
+              name="organizerName"
+              label="Tên"
+              rules={rules.organizerName}
+            >
               <Input />
             </Form.Item>
           </Col>
@@ -249,7 +280,11 @@ const TourAdd = () => {
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item name="organizerEmail" label="Email" rules={rules.organizerEmail}>
+            <Form.Item
+              name="organizerEmail"
+              label="Email"
+              rules={rules.organizerEmail}
+            >
               <Input />
             </Form.Item>
           </Col>

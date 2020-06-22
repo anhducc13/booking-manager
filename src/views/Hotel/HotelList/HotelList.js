@@ -1,9 +1,10 @@
 import React from 'react';
 import { browserHistory, objectHelpers } from 'helpers';
 import { useHotelsData } from 'hooks/hotel';
-import { Card, Table } from 'antd';
+import { Card, Table, notification } from 'antd';
 import { renderColumnsHotels } from './helper';
 import HotelFilter from './HotelFilter';
+import { hotelService } from '../../../services';
 
 const { getObjFromQueryString } = objectHelpers;
 
@@ -20,7 +21,16 @@ const HotelList = () => {
     queryParams,
     setQueryParams,
     fetchingHotel,
+    reload,
   } = useHotelsData(defaultParams);
+
+  const handleDeleteHotel = (id) => {
+    hotelService.deleteHotel(id)
+      .then(() => {
+        notification.success({ message: "Xóa thành công"});
+        reload();
+      })
+  }
 
   return (
     <div className="seller-block">
@@ -46,7 +56,7 @@ const HotelList = () => {
       >
         <Table
           bordered
-          columns={renderColumnsHotels()}
+          columns={renderColumnsHotels(handleDeleteHotel)}
           rowKey="id"
           dataSource={hotels}
           pagination={pagination}

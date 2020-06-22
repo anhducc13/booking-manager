@@ -2,7 +2,9 @@
 import axios from 'axios';
 import { requestHelper } from 'helpers';
 
-import { REACT_APP_BASE_API_URL } from 'configs';
+// import { REACT_APP_BASE_API_URL } from 'configs';
+
+let REACT_APP_BASE_API_URL = 'http://localhost:5000';
 
 const getAuthorization = () => {
   return '';

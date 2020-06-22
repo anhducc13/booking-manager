@@ -54,6 +54,8 @@ export const useHotelsData = (defaultParams = {}) => {
     }
   }, [queryParams]);
 
+  const reload = () => getHotels(queryParams);
+
   return {
     hotels,
     pagination,
@@ -61,5 +63,6 @@ export const useHotelsData = (defaultParams = {}) => {
     queryParams,
     setQueryParams,
     fetchingHotel: loading,
+    reload,
   };
 };
