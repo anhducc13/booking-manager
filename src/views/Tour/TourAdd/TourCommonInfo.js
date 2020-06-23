@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Divider, Form, Input, InputNumber, Row, TimePicker, Select } from 'antd';
 import moment from 'moment';
 import { provinces } from '../../../constant/province';
-import { utilities } from '../../../constant/hotel';
 import { transportations } from '../../../constant/tour';
 
 const formItemLayout = {
