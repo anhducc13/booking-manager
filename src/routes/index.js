@@ -11,6 +11,8 @@ const HotelAdd = lazy(() => import('views/Hotel/HotelAdd'));
 const HotelView = lazy(() => import('views/Hotel/HotelView'));
 const HotelList = lazy(() => import('views/Hotel/HotelList'));
 const TourAdd = lazy(() => import('views/Tour/TourAdd'));
+const TourList = lazy(() => import('views/Tour/TourList'));
+const TourView = lazy(() => import('views/Tour/TourView'));
 const BookingHotelList = lazy(() => import('views/Booking/BookingHotel/BookingHotelList'));
 
 /*
@@ -58,7 +60,7 @@ const routes = [
     exact: true,
     path: '/tours',
     name: 'Danh sách tour',
-    component: TourAdd,
+    component: TourList,
   },
   {
     exact: true,
@@ -70,7 +72,7 @@ const routes = [
     exact: true,
     path: '/tours/:id',
     name: 'Chi tiết tour',
-    component: TourAdd,
+    component: TourView,
   },
   {
     name: 'Booking',

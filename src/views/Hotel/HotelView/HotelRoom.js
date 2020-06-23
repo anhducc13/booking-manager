@@ -101,16 +101,16 @@ const HotelRoom = (props) => {
     ]) : undefined,
   };
   const rules = {
-    roomTypes: [{required: true, message: 'Vui lòng chọn các loại phòng'}],
-    image: [{required: true, message: 'Vui lòng chọn 1 ảnh'}],
-    priceStandard: [{required: showStandard, message: 'Vui lòng nhập giá'}],
-    availableRoomStandard: [{required: showStandard, message: 'Vui lòng nhập số lượng phòng'}],
-    taxStandard: [{required: showStandard, message: 'Vui lòng nhập thuế'}],
-    imageStandard: [{required: showStandard, message: 'Vui lòng chọn 1 ảnh'}],
-    priceDeluxe: [{required: showDeluxe, message: 'Vui lòng nhập giá'}],
-    availableRoomDeluxe: [{required: showDeluxe, message: 'Vui lòng nhập số lượng phòng'}],
-    taxDeluxe: [{required: showDeluxe, message: 'Vui lòng nhập thuế'}],
-    imageDeluxe: [{required: showDeluxe, message: 'Vui lòng chọn 1 ảnh'}],
+    roomTypes: [{ required: true, message: 'Vui lòng chọn các loại phòng' }],
+    image: [{ required: true, message: 'Vui lòng chọn 1 ảnh' }],
+    priceStandard: [{ required: showStandard, message: 'Vui lòng nhập giá' }],
+    availableRoomStandard: [{ required: showStandard, message: 'Vui lòng nhập số lượng phòng' }],
+    taxStandard: [{ required: showStandard, message: 'Vui lòng nhập thuế' }],
+    imageStandard: [{ required: showStandard, message: 'Vui lòng chọn 1 ảnh' }],
+    priceDeluxe: [{ required: showDeluxe, message: 'Vui lòng nhập giá' }],
+    availableRoomDeluxe: [{ required: showDeluxe, message: 'Vui lòng nhập số lượng phòng' }],
+    taxDeluxe: [{ required: showDeluxe, message: 'Vui lòng nhập thuế' }],
+    imageDeluxe: [{ required: showDeluxe, message: 'Vui lòng chọn 1 ảnh' }],
   };
 
   const onFinish = (values) => {
@@ -128,18 +128,18 @@ const HotelRoom = (props) => {
       ...rest
     } = values;
     rest.roomTypes = roomTypes.join(',');
-    rest.image = image[0].response ? image[0].response.url : image.url;
+    rest.image = image[0].response ? image[0].response.url : image[0].url;
     if (roomTypes.includes('standard')) {
       rest.priceStandard = priceStandard;
       rest.availableRoomStandard = availableRoomStandard;
       rest.taxStandard = taxStandard;
-      rest.imageStandard = imageStandard[0].response ? imageStandard[0].response.url : imageStandard.url;
+      rest.imageStandard = imageStandard[0].response ? imageStandard[0].response.url : imageStandard[0].url;
     }
     if (roomTypes.includes('deluxe')) {
       rest.priceDeluxe = priceDeluxe;
       rest.availableRoomDeluxe = availableRoomDeluxe;
       rest.taxDeluxe = taxDeluxe;
-      rest.imageDeluxe = imageDeluxe[0].response ? imageDeluxe[0].response.url : imageDeluxe.url;
+      rest.imageDeluxe = imageDeluxe[0].response ? imageDeluxe[0].response.url : imageDeluxe[0].url;
     }
     if (!roomTypes.includes('standard')) {
       rest.priceStandard = null;
