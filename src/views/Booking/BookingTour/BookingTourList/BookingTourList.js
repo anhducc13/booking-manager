@@ -46,7 +46,7 @@ const BookingTourList = () => {
       </Card>
       <Card
         className="mt-3"
-        title="Danh sách đặt phòng"
+        title="Danh sách đặt tour"
         extra={
           <span className="total">
             Tổng số đơn đặt tour: {pagination.total || 0}
