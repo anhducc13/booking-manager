@@ -4,6 +4,7 @@ import { useBookingHotelsData} from '../../../../hooks/booking';
 import { Card, notification, Table } from 'antd';
 import { renderColumnsHotelBookings } from './helper';
 import { hotelBookingService } from '../../../../services';
+import BookingHotelFilter from './BookingHotelFilter';
 
 const { getObjFromQueryString } = objectHelpers;
 
@@ -35,14 +36,14 @@ const BookingHotelList = () => {
 
   return (
     <div className="seller-block">
-      {/*<Card*/}
-        {/*title="Tìm kiếm đặt phòng"*/}
-        {/*bodyStyle={{*/}
-          {/*padding: 0,*/}
-        {/*}}*/}
-      {/*>*/}
-       {/*Ductt*/}
-      {/*</Card>*/}
+      <Card
+        title="Tìm kiếm đặt phòng"
+        bodyStyle={{
+          padding: 0,
+        }}
+      >
+        <BookingHotelFilter queryParams={queryParams} setQueryParams={setQueryParams} />
+      </Card>
       <Card
         className="mt-3"
         title="Danh sách đặt phòng"

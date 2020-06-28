@@ -114,6 +114,7 @@ export const renderColumnsHotelBookings = (onChangeStatus) => {
           <>
             <div>Giá phòng / 1 đêm: {item.roomPrice} VNĐ</div>
             <div>Thuế: {item.roomTax} %</div>
+            <div>Tổng tiền: {item.grandTotal} VNĐ</div>
           </>
         )
       },
