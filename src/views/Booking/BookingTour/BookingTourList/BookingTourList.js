@@ -4,6 +4,7 @@ import { useBookingToursData} from '../../../../hooks/booking';
 import { Card, notification, Table } from 'antd';
 import { renderColumnsTourBookings } from './helper';
 import { tourBookingService } from '../../../../services';
+import BookingTourFilter from './BookingTourFilter';
 
 const { getObjFromQueryString } = objectHelpers;
 
@@ -35,14 +36,14 @@ const BookingTourList = () => {
 
   return (
     <div className="seller-block">
-      {/*<Card*/}
-        {/*title="Tìm kiếm đặt phòng"*/}
-        {/*bodyStyle={{*/}
-          {/*padding: 0,*/}
-        {/*}}*/}
-      {/*>*/}
-       {/*Ductt*/}
-      {/*</Card>*/}
+      <Card
+        title="Tìm kiếm đặt tour"
+        bodyStyle={{
+          padding: 0,
+        }}
+      >
+        <BookingTourFilter queryParams={queryParams} setQueryParams={setQueryParams} />
+      </Card>
       <Card
         className="mt-3"
         title="Danh sách đặt phòng"
