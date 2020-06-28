@@ -12,6 +12,7 @@ const HotelView = lazy(() => import('views/Hotel/HotelView'));
 const HotelList = lazy(() => import('views/Hotel/HotelList'));
 const TourAdd = lazy(() => import('views/Tour/TourAdd'));
 const BookingHotelList = lazy(() => import('views/Booking/BookingHotel/BookingHotelList'));
+const BookingTourList = lazy(() => import('views/Booking/BookingTour/BookingTourList'));
 
 /*
  * If route has children => it's a parent menu
@@ -87,7 +88,7 @@ const routes = [
     exact: true,
     path: '/booking-tours',
     name: 'Danh sách đặt tours',
-    component: Home,
+    component: BookingTourList,
   },
   {
     exact: true,

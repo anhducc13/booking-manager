@@ -1,15 +1,6 @@
 import { Button, Tag, Tooltip, Dropdown, Menu, Modal } from 'antd';
-import { Link } from 'react-router-dom';
 import React from 'react';
-import { ZoomInOutlined } from '@ant-design/icons';
-import { roomTypes, status as allStatus } from '../../../../constant/hotel';
-
-const renderRoom = (code) => {
-  const type = roomTypes.find(x => x.code === code);
-  if (type)
-    return type.name;
-  return null;
-};
+import { status as allStatus } from '../../../../constant/hotel';
 
 const renderStatus = (code) => {
   const stt = allStatus.find(x => x.code === code);
@@ -18,7 +9,7 @@ const renderStatus = (code) => {
   return null;
 };
 
-export const renderColumnsHotelBookings = (onChangeStatus) => {
+export const renderColumnsTourBookings = (onChangeStatus) => {
   return [
     {
       title: 'ID',
@@ -56,7 +47,7 @@ export const renderColumnsHotelBookings = (onChangeStatus) => {
             Modal.info({
               title: 'Thông báo',
               content: (
-                <div>Đơn đặt phòng chưa thanh toán</div>
+                <div>Đơn đặt tour chưa thanh toán</div>
               ),
               onOk() {},
             });
@@ -79,7 +70,7 @@ export const renderColumnsHotelBookings = (onChangeStatus) => {
       align: 'center',
     },
     {
-      title: 'Khách đặt phòng',
+      title: 'Khách đặt tour',
       render: (text, item) => {
         return (
           <>
@@ -93,13 +84,12 @@ export const renderColumnsHotelBookings = (onChangeStatus) => {
       align: 'center',
     },
     {
-      title: 'Thông tin phòng',
+      title: 'Thông tin tour',
       render: (text, item) => {
         return (
           <>
-            <div>Khách sạn: {item.hotel.name}</div>
-            <div>Loại phòng: {renderRoom(item.roomType)}</div>
-            <div>Số phòng: {item.rooms}</div>
+            <div>Tour: {item.tour.name}</div>
+            <div>Ngày bắt đầu: {item.startDate}</div>
             <div>Số khách: {item.guests}</div>
           </>
         )
@@ -112,22 +102,11 @@ export const renderColumnsHotelBookings = (onChangeStatus) => {
       render: (text, item) => {
         return (
           <>
-            <div>Giá phòng / 1 đêm: {item.roomPrice} VNĐ</div>
-            <div>Thuế: {item.roomTax} %</div>
+            <div>Giá tour / 1 người: {item.pricePerParticipant} VNĐ</div>
           </>
         )
       },
       key: 'ghi',
-      align: 'center',
-    },
-    {
-      title: 'Ngày checkin',
-      dataIndex: 'checkinDate',
-      align: 'center',
-    },
-    {
-      title: 'Ngày checkout',
-      dataIndex: 'checkoutDate',
       align: 'center',
     },
   ];
