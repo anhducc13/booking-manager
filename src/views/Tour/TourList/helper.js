@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { ZoomInOutlined, CloseOutlined } from '@ant-design/icons';
 
-export const renderColumnsHotels = (handleDeleteHotel) => {
+export const renderColumnsTours = (handleDeleteTour) => {
   return [
     {
       title: 'ID',
@@ -12,18 +12,17 @@ export const renderColumnsHotels = (handleDeleteHotel) => {
       width: 70,
     },
     {
-      title: 'Tên khách sạn',
+      title: 'Tên tour',
       dataIndex: 'name',
-      align: 'center',
     },
     {
       title: 'Hình ảnh',
-      render: (image) => {
+      render: (images) => {
         return (
-          <Avatar src={image} size={100} />
+          <Avatar src={images[0]} size={100} />
         )
       },
-      dataIndex: 'image',
+      dataIndex: 'images',
       align: 'center',
     },
     {
@@ -38,43 +37,37 @@ export const renderColumnsHotels = (handleDeleteHotel) => {
       align: 'center',
     },
     {
-      title: 'Phòng tiêu chuẩn',
+      title: 'Thông tin chung',
       render: (text, item) => {
-        if (item.roomTypes.includes('standard')) {
-          return (
-            <>
-              <div>Giá phòng: {item.priceStandard} VNĐ</div>
-              <div>Số lượng phòng: {item.availableRoomStandard}</div>
-              <div>Thuế: {item.taxStandard} %</div>
-            </>
-          )
-        }
-        return null;
+        return (
+          <>
+            <div>Giá / 1 người: {item.pricePerParticipant || 0} VNĐ</div>
+            <div>Thời lượng tour: {item.duration} ngày</div>
+            <div>Số người: {item.minSize} {' -> '} {item.maxSize}</div>
+          </>
+        )
       },
-      key: 'standard',
+      key: 'common',
       align: 'center',
     },
     {
-      title: 'Phòng sang trọng',
+      title: 'Người quản lý tour',
       render: (text, item) => {
-        if (item.roomTypes.includes('deluxe')) {
-          return (
-            <>
-              <div>Giá phòng: {item.priceDeluxe} VNĐ</div>
-              <div>Số lượng phòng: {item.availableRoomDeluxe}</div>
-              <div>Thuế: {item.taxDeluxe} %</div>
-            </>
-          )
-        }
-        return null;
+        return (
+          <>
+            <div>Tên: {item.organizerName}</div>
+            <div>SĐT: {item.organizerPhoneNumber}</div>
+            <div>Email: {item.organizerEmail}</div>
+          </>
+        )
       },
-      key: 'deluxe',
+      key: 'organizer',
       align: 'center',
     },
     {
       render: (text, item) => (
         <>
-          <Link to={`/hotels/${item.id}`}>
+          <Link to={`/tours/${item.id}`}>
             <Button
               type="primary"
               title="Chi tiết"

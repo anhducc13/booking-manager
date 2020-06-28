@@ -294,6 +294,7 @@ const TourAdd = () => {
             <Form.Item
               name="organizerAvatar"
               label="Ảnh đại diện"
+              valuePropName="fileList"
               getValueFromEvent={normFile}
               rules={rules.organizerAvatar}
             >
